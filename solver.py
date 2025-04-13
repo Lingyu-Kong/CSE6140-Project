@@ -9,6 +9,7 @@ from io_tools import(
 )
 from commons import MSCInput, MSCOutput, Set
 from branch_and_bound import exact_bnb
+from linear_search import annealing_simulate, hill_climbing
 
 class MSCSolver:
     """
@@ -49,9 +50,9 @@ class MSCSolver:
         elif self.algorithm == "Approx":
             pass
         elif self.algorithm == "LS1":
-            pass
+            result = annealing_simulate(self.input_data)
         elif self.algorithm == "LS2":
-            pass
+            result = hill_climbing(self.input_data)
         else:
             raise ValueError(f"Algorithm {self.algorithm} is not supported.")
         return result # type: ignore[unreachable]
@@ -62,7 +63,7 @@ class MSCSolver:
         """
         value, set_indices = load_output(output_file)
         _value, _set_indices = result["value"], result["set_indices"]
-        assert _value == value, f"Value {value} is not equal to {_value} for {output_file}."
+        assert _value == value, f"Value {value} is not equal to {_value} for {output_file}, {set_indices} vs {_set_indices}."
         return True
         
         
@@ -73,12 +74,12 @@ if __name__ == "__main__":
     data_dir = os.path.join(dir_path, "data")
     files = os.listdir(data_dir)
     files.sort()
-    algorithm = "BnB"
+    algorithm = "LS2"
     
     for file in tqdm(files):
-        # if not (file.endswith(".in") and "small" in file):
+        if not (file.endswith(".in") and "test" in file):
         # if not (file.endswith(".in") and "large" in file):
-        if not file.endswith(".in"):
+        # if not file.endswith(".in"):
             continue
         input_file = os.path.join(data_dir, file)
         output_file = os.path.join(data_dir, file.replace(".in", ".out"))
