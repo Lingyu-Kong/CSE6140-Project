@@ -1,6 +1,8 @@
 
 from commons import MSCInput, MSCOutput, Set
-
+# Approximation algorithm using a greedy approach to solve the Minimum Set Cover Problem
+# At each step we pick the subset that covers the most currently uncovered elements
+# until all elements are covered
 def greedy_set_cover(input_data: MSCInput) -> MSCOutput:
     n = input_data["n"]
     m = input_data["m"]
@@ -33,7 +35,7 @@ def greedy_set_cover(input_data: MSCInput) -> MSCOutput:
         covered.update(best_subset_new_coverage) # Add newly covered numbers
         selected_subsets.append(best_subset_index + 1) # Add the index of the subset selected
         used.add(best_subset_index) # Mark the subset as used
-
+    selected_subsets = sorted(i+1 for i in selected_subsets)
     return MSCOutput(
         value=len(selected_subsets),
         set_indices=selected_subsets,

@@ -161,7 +161,7 @@ def annealing_simulate(
             quality_trace.append(best_cost)
         
         T = T0 * (ALPHA ** (iter_id / MAX_ITER))
-        
+    best_solution = sorted(i+1 for i in best_solution) # So we have sets starting from 1 not 0  
     return MSCOutput(
         value=len(best_solution),
         set_indices=best_solution,
@@ -210,7 +210,7 @@ def hill_climbing(
                 best_cost = current_cost
                 timestamps.append(time.time() - start_time)
                 quality_trace.append(best_cost)
-        
+    best_solution = sorted(i+1 for i in best_solution) # So we have sets starting from 1 not 0
     return MSCOutput(
         value=len(best_solution),
         set_indices=best_solution,

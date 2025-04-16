@@ -136,6 +136,7 @@ def exact_bnb(
     
     # return the result
     set_indices = [i+1 for i in upper_bound_solution["sets_selected"]]
+    set_indices.sort()
     result = MSCOutput(
         value=upper_bound,
         set_indices=set_indices,
