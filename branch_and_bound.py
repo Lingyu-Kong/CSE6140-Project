@@ -1,7 +1,8 @@
 import random
 import copy
 import time
-from typing_extensions import TypedDict
+#from typing_extensions import TypedDict
+from typing import TypedDict
 from commons import MSCInput, MSCOutput, Set
 
 class BnBNode(TypedDict):

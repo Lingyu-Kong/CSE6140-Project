@@ -1,6 +1,7 @@
 import os
 from typing import Literal
-from typing_extensions import TypedDict
+#from typing_extensions import TypedDict
+from typing import TypedDict #python 3.8 and higher use typing
 from io_tools import(
     load_input,
     load_output,
@@ -10,6 +11,7 @@ from io_tools import(
 from commons import MSCInput, MSCOutput, Set
 from branch_and_bound import exact_bnb
 from linear_search import annealing_simulate, hill_climbing
+from approxgreedy import greedy_set_cover
 
 class MSCSolver:
     """
@@ -48,7 +50,7 @@ class MSCSolver:
         if self.algorithm == "BnB":
             result = exact_bnb(self.input_data)
         elif self.algorithm == "Approx":
-            pass
+            result = greedy_set_cover(self.input_data)
         elif self.algorithm == "LS1":
             result = annealing_simulate(self.input_data)
         elif self.algorithm == "LS2":
@@ -74,12 +76,12 @@ if __name__ == "__main__":
     data_dir = os.path.join(dir_path, "data")
     files = os.listdir(data_dir)
     files.sort()
-    algorithm = "LS2"
+    algorithm = "Approx"
     
     for file in tqdm(files):
-        if not (file.endswith(".in") and "test" in file):
+        # if not (file.endswith(".in") and "test" in file):
         # if not (file.endswith(".in") and "large" in file):
-        # if not file.endswith(".in"):
+        if not file.endswith(".in") and "small" in file:
             continue
         input_file = os.path.join(data_dir, file)
         output_file = os.path.join(data_dir, file.replace(".in", ".out"))

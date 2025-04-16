@@ -1,4 +1,5 @@
-from typing_extensions import TypedDict
+#from typing_extensions import TypedDict
+from typing import TypedDict #python 3.8 and higher use typing
 
 class Set(object):
     def __init__(
