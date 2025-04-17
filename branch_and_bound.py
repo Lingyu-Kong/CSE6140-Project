@@ -1,7 +1,8 @@
 import random
 import copy
 import time
-from typing_extensions import TypedDict
+#from typing_extensions import TypedDict
+from typing import TypedDict
 from commons import MSCInput, MSCOutput, Set
 
 class BnBNode(TypedDict):
@@ -135,6 +136,7 @@ def exact_bnb(
     
     # return the result
     set_indices = [i+1 for i in upper_bound_solution["sets_selected"]]
+    set_indices.sort()
     result = MSCOutput(
         value=upper_bound,
         set_indices=set_indices,
