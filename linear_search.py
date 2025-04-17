@@ -26,7 +26,7 @@ def get_neighbor_solution(
     all_sets: list[set[int]],
 ) -> list[int]:
     """
-    Get a neighbor solution by randomly adding or removing a set.
+    Get a neighbor solution by randomly adding, removing, or replacing a set.
     """
     new_solution = selected_sets.copy()
     if len(new_solution) == 0:
@@ -40,13 +40,19 @@ def get_neighbor_solution(
         new_solution.remove(random.choice(new_solution))
         return new_solution
     else:
-        if random.random() < 0.5:
+        if random.random() < 1/3:
             # remove a random set
             new_solution.remove(random.choice(new_solution))
-        else:
+        elif random.random() < 2/3:
             # add a random set
             candidate_sets = list(set(range(len(all_sets))) - set(new_solution))
             if candidate_sets:
+                new_solution.append(random.choice(candidate_sets))
+        else:
+            # replace a random set with another random set
+            candidate_sets = list(set(range(len(all_sets))) - set(new_solution))
+            if candidate_sets:
+                new_solution.remove(random.choice(new_solution))
                 new_solution.append(random.choice(candidate_sets))
     return new_solution
 
