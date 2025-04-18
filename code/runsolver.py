@@ -3,6 +3,11 @@ import os
 from solver import MSCSolver
 from io_tools import write_solution, write_trace 
 
+"""
+Command‑line entrypoint that parses arguments for instance file, algorithm choice, cutoff time, and seed.  
+Loads the input via io_tools, dispatches to solver.solve(), and writes out the `.sol` and `.trace` outputs.
+"""
+
 output_dir = os.path.join(os.getcwd(), "output") # We redirect our outputs to another folder
 
 def main():
