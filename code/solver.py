@@ -12,6 +12,11 @@ from commons import MSCInput, MSCOutput, Set
 from branch_and_bound import exact_bnb
 from linear_search import annealing_simulate, hill_climbing
 from approxgreedy import greedy_set_cover
+"""
+Implements the Solver class which encapsulates the solve() method.  
+Dispatches the MSCInput to the correct algorithm (BnB, Approx, LS1, LS2) and returns the corresponding MSCOutput for 
+unified processing.
+"""
 
 class MSCSolver:
     """

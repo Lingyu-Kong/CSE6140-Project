@@ -3,6 +3,10 @@ import random
 import math
 import copy
 from commons import MSCInput, MSCOutput, Set
+"""
+Implements two local search variants (e.g., Simulated Annealing and Hill Climbing) for Set Cover.  
+Defines cost functions, neighborhood moves, and convergence logic under a time cutoff, producing solution and trace data.
+"""
 
 MAX_ITER = 1000_000  # maximum iterations
 

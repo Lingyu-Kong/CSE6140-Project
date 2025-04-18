@@ -1,6 +1,9 @@
 import os
 from commons import Set
-
+'''
+Provides helper functions for reading and writing Set Cover instance and solution files.  
+Includes routines to parse `.in` input files and to format and output `.sol` and `.trace` files consistently across all algorithms.
+'''
 def load_input(file_path: str):
     """
     Load input from a .in file

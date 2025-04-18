@@ -4,7 +4,12 @@ import time
 #from typing_extensions import TypedDict
 from typing import TypedDict
 from commons import MSCInput, MSCOutput, Set
-
+"""
+Implements an exact Branch-and-Bound solver for the minimum set cover problem.
+It does this by using a greedy algorithm to seed an initial upper bound, a greedy
+heuristic for lower-bounding pruning, and records timestamped solutions improvements
+up to a given time cutoff.
+"""
 class BnBNode(TypedDict):
     """
     Elemental node of the branch-and-bound tree.
